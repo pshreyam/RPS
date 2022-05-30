@@ -1,32 +1,40 @@
 <style>
-.rock {
-    color: rgb(184, 68, 110);
-}
-.paper {
-    color: rgb(217, 48, 67);
-}
-.scissors {
-    color: rgb(112, 189, 53);
-}
+  .rock {
+     color: rgb(184, 68, 110);
+   }
 
-.bold {
-    font-weight: bold;
-}
+   .paper {
+     color: rgb(217, 48, 67);
+   }
 
-.bold-italic {
-    font-weight: bold;
-    font-style: italic;
-}
+   .scissors {
+     color: rgb(112, 189, 53);
+   }
+
+   .bold {
+     font-weight: bold;
+   }
+
+   .bold-italic {
+     font-weight: bold;
+     font-style: italic;
+   }
 </style>
 
-<p>This is a very entertaining game that provides instant entertainment to users.</p>
-<p>This is a game that generates random output which is priority based.</p>
-<b style="color:red">Here:</b>
+<p>The computer randomly selects a choices from a set of available choices.</p>
+<p>The user is to choose an option from the same set of available choices.</p>
+The choices available are:
 <ul>
-    <li><span class="rock bold-italic">Rock</span> wins <span class="scissors bold">scissors</span></li>
-    <li><span class="scissors bold-italic">Scissors</span> wins <span class="paper bold">paper</span></li>
-    <li><span class="paper bold-italic">Paper</span> wins <span class="rock bold">rock</span></li>
+  <li><span class="rock bold-italic">Rock</span></li>
+  <li><span class="scissors bold-italic">Scissors</span></li>
+  <li><span class="paper bold-italic">Paper</span></li>
 </ul>
-v1.0.2
+The following rules are defined for deciding the winner:
+<ul>
+  <li><span class="rock bold-italic">Rock</span> wins <span class="scissors bold">scissors</span></li>
+  <li><span class="scissors bold-italic">Scissors</span> wins <span class="paper bold">paper</span></li>
+  <li><span class="paper bold-italic">Paper</span> wins <span class="rock bold">rock</span></li>
+</ul>
+v0.0.3
 <br>
 © Shreyam Pokharel 😂😂
