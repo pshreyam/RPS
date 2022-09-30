@@ -11,6 +11,7 @@ import random
 ASSETS_FOLDER = "assets"
 HOLD_SLOGAN = ["Let's Get Going!", "Let's Play!", "Let's Start Now!"]
 
+
 def suppress_qt_warnings():
     """
     Suppresses Qt Warnings
@@ -26,17 +27,24 @@ class Ui_MainWindow(object):
         rock = QPixmap(f'{ASSETS_FOLDER}/rock.png')
         paper = QPixmap(f'{ASSETS_FOLDER}/paper.png')
         scissors = QPixmap(f'{ASSETS_FOLDER}/scissors.png')
-        self.label_user.setStyleSheet("background:rgb(50, 173, 81);\n""border-radius:10px;")
-        self.label_computer.setStyleSheet("background:rgb(95, 66, 212);\n""border-radius:10px;")
-        
+        self.label_user.setStyleSheet(
+            "background:rgb(50, 173, 81);\n"
+            "border-radius:10px;")
+        self.label_computer.setStyleSheet(
+            "background:rgb(95, 66, 212);\n"
+            "border-radius:10px;")
+
         # for computer
         if choice == "paper":
-            self.label_computer.setPixmap(paper.transformed(QTransform().scale(-1, 1)))
+            self.label_computer.setPixmap(
+                paper.transformed(QTransform().scale(-1, 1)))
         elif choice == "scissors":
-            self.label_computer.setPixmap(scissors.transformed(QTransform().scale(-1, 1)))
+            self.label_computer.setPixmap(
+                scissors.transformed(QTransform().scale(-1, 1)))
         else:
-            self.label_computer.setPixmap(rock.transformed(QTransform().scale(-1, 1)))
-        
+            self.label_computer.setPixmap(
+                rock.transformed(QTransform().scale(-1, 1)))
+
         # for user
         if user == "paper":
             self.label_user.setPixmap(paper)
@@ -44,7 +52,7 @@ class Ui_MainWindow(object):
             self.label_user.setPixmap(scissors)
         else:
             self.label_user.setPixmap(rock)
-             
+
     def view_help(self):
         """ Implement help functionalities using this function
         Pop up a help dialog box.
@@ -59,7 +67,7 @@ class Ui_MainWindow(object):
         msg.setWindowTitle("Help - Rock Paper Scissors")
         msg.setStandardButtons(QMessageBox.Ok)
         retval = msg.exec_()
-      
+
     def view_about(self):
         """ Implement about functionalities using this function
         Pop up an about dialog box.
@@ -79,11 +87,15 @@ class Ui_MainWindow(object):
         self.label.setText("")
         computer = QPixmap(f"{ASSETS_FOLDER}/computer.png")
         user = QPixmap(f"{ASSETS_FOLDER}/user.png")
-        self.label.move(30,60)
+        self.label.move(30, 180)
         self.label.setText(f"{random.choice(HOLD_SLOGAN)}")
-        self.label_user.setStyleSheet("background:rgb(50, 173, 81);\n""border-radius:10px;")
+        self.label_user.setStyleSheet(
+            "background:rgb(50, 173, 81);\n"
+            "border-radius:10px;")
         self.label_user.setPixmap(user)
-        self.label_computer.setStyleSheet("background:rgb(95, 66, 212);\n""border-radius:10px;")
+        self.label_computer.setStyleSheet(
+            "background:rgb(95, 66, 212);\n"
+            "border-radius:10px;")
         self.label_computer.setPixmap(computer)
         user = ""
         self.statusbar.showMessage("Reseting...", 200)
@@ -92,37 +104,43 @@ class Ui_MainWindow(object):
         self.statusbar.showMessage("Playing...")
         user = "rock"
         result, choice = play(user)
-        self.label.move(90, 250)
+        self.label.move(90, 180)
         self.label.setText(result)
         self.set_user_computer(choice, user)
-        self.statusbar.showMessage(f"Computer chose: {choice} \t\t You chose: {user}")
+        self.statusbar.showMessage(
+            f"Computer chose: {choice} \t\t You chose: {user}")
         user = ""
 
     def user_paper(self):
         self.statusbar.showMessage("Playing...")
         user = "paper"
         result, choice = play(user)
-        self.label.move(90, 250)
+        self.label.move(90, 180)
         self.label.setText(result)
         self.set_user_computer(choice, user)
-        self.statusbar.showMessage(f"Computer chose: {choice} \t\t You chose: {user}")
+        self.statusbar.showMessage(
+            f"Computer chose: {choice} \t\t You chose: {user}")
         user = ""
-        
+
     def user_scissors(self):
         self.statusbar.showMessage("Playing...")
         user = "scissors"
-        result,choice = play(user)
-        self.label.move(90, 250)
+        result, choice = play(user)
+        self.label.move(90, 180)
         self.label.setText(result)
         self.set_user_computer(choice, user)
-        self.statusbar.showMessage(f"Computer chose: {choice} \t\t You chose: {user}")
+        self.statusbar.showMessage(
+            f"Computer chose: {choice} \t\t You chose: {user}")
         user = ""
-        
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setFixedSize(800, 600)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(f"{ASSETS_FOLDER}/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(
+            QtGui.QPixmap(f"{ASSETS_FOLDER}/icon.png"),
+            QtGui.QIcon.Normal,
+            QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -133,14 +151,17 @@ class Ui_MainWindow(object):
         font.setFamily("Consolas")
         font.setPointSize(16)
         self.rock_pushButton.setFont(font)
-        self.rock_pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.rock_pushButton.setCursor(
+            QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.rock_pushButton.setObjectName("rock_pushButton")
-        self.rock_pushButton.setStyleSheet("border-radius:8px;\n""background:rgb(184, 68, 110);\n""color:'white';\n")
+        self.rock_pushButton.setStyleSheet(
+            "border-radius:8px;\n"
+            "background:rgb(184, 68, 110);\n"
+            "color:'white';\n")
         self.rock_pushButton.setIcon(QIcon(f"{ASSETS_FOLDER}/rock.png"))
-        self.rock_pushButton.setIconSize(QSize(191,51))
+        self.rock_pushButton.setIconSize(QSize(191, 51))
         self.rock_pushButton.clicked.connect(self.user_rock)
         self.rock_pushButton.setAutoDefault(True)
-
 
         self.scissors_pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.scissors_pushButton.setGeometry(QtCore.QRect(290, 480, 191, 51))
@@ -148,30 +169,37 @@ class Ui_MainWindow(object):
         font.setFamily("Consolas")
         font.setPointSize(16)
         self.scissors_pushButton.setFont(font)
-        self.scissors_pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.scissors_pushButton.setCursor(
+            QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.scissors_pushButton.setObjectName("scissors_pushButton")
-        self.scissors_pushButton.setStyleSheet("border-radius:8px;\n""background:rgb(112, 189, 53);\n""color:'white';\n")
-        self.scissors_pushButton.setIcon(QIcon(f"{ASSETS_FOLDER}/scissors.png"))
-        self.scissors_pushButton.setIconSize(QSize(191,51))
+        self.scissors_pushButton.setStyleSheet(
+            "border-radius:8px;\n"
+            "background:rgb(112, 189, 53);\n"
+            "color:'white';\n")
+        self.scissors_pushButton.setIcon(
+            QIcon(f"{ASSETS_FOLDER}/scissors.png"))
+        self.scissors_pushButton.setIconSize(QSize(191, 51))
         self.scissors_pushButton.clicked.connect(self.user_scissors)
         self.scissors_pushButton.setAutoDefault(True)
-        
-        
+
         self.paper_pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.paper_pushButton.setGeometry(QtCore.QRect(530, 480, 191, 51))
         font = QtGui.QFont()
         font.setFamily("Consolas")
         font.setPointSize(16)
         self.paper_pushButton.setFont(font)
-        self.paper_pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.paper_pushButton.setCursor(
+            QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.paper_pushButton.setObjectName("paper_pushButton")
-        self.paper_pushButton.setStyleSheet("border-radius:8px;\n""background:rgb(217, 48, 67);\n""color:'white';\n")
+        self.paper_pushButton.setStyleSheet(
+            "border-radius:8px;\n"
+            "background:rgb(217, 48, 67);\n"
+            "color:'white';\n")
         self.paper_pushButton.setIcon(QIcon(f"{ASSETS_FOLDER}/paper.png"))
-        self.paper_pushButton.setIconSize(QSize(191,51))
+        self.paper_pushButton.setIconSize(QSize(191, 51))
         self.paper_pushButton.clicked.connect(self.user_paper)
         self.paper_pushButton.setAutoDefault(True)
 
-        
         self.info_label = QtWidgets.QLabel(self.centralwidget)
         self.info_label.setGeometry(QtCore.QRect(0, 0, 800, 42))
         font = QtGui.QFont()
@@ -180,10 +208,11 @@ class Ui_MainWindow(object):
         self.info_label.setFont(font)
         self.info_label.setStyleSheet("background: rgb(76, 122, 161);\n")
         self.info_label.setObjectName("info_label")
-        self.info_label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.info_label.setAlignment(
+            QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(30, 60, 300, 100))
+        self.label.setGeometry(QtCore.QRect(30, 180, 300, 100))
         font = QtGui.QFont()
         font.setFamily("Consolas")
         font.setPointSize(18)
@@ -194,7 +223,8 @@ class Ui_MainWindow(object):
 
         self.userlabel = QtWidgets.QLabel(self.centralwidget)
         self.userlabel.setGeometry(QtCore.QRect(300, 90, 200, 30))
-        self.userlabel.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.userlabel.setAlignment(
+            QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
         font = QtGui.QFont()
         font.setFamily("Consolas")
         font.setPointSize(18)
@@ -205,40 +235,47 @@ class Ui_MainWindow(object):
 
         self.computerlabel = QtWidgets.QLabel(self.centralwidget)
         self.computerlabel.setGeometry(QtCore.QRect(530, 90, 200, 30))
-        self.computerlabel.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.computerlabel.setAlignment(
+            QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
         font = QtGui.QFont()
         font.setFamily("Consolas")
         font.setPointSize(18)
         self.computerlabel.setFont(font)
         self.computerlabel.setStyleSheet("color: black;\nbackground: None;\n")
         self.computerlabel.setObjectName("computerlabel")
-        self.computerlabel.setText("Computer") 
+        self.computerlabel.setText("Computer")
 
         computer = QPixmap(f"{ASSETS_FOLDER}/computer.png")
         user = QPixmap(f"{ASSETS_FOLDER}/user.png")
-        
+
         self.label_user = QtWidgets.QLabel(self.centralwidget)
         self.label_user.setGeometry(QtCore.QRect(300, 130, 200, 200))
-        self.label_user.setStyleSheet("background:rgb(50, 173, 81);\n""border-radius:10px;")
+        self.label_user.setStyleSheet(
+            "background:rgb(50, 173, 81);\n"
+            "border-radius:10px;")
         self.label_user.setPixmap(user)
-        self.label_user.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.label_user.setAlignment(
+            QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
         font = QtGui.QFont()
         font.setFamily("Consolas")
         font.setPointSize(18)
         self.label_user.setFont(font)
         self.label_user.setObjectName("label_user")
-        
+
         self.label_computer = QtWidgets.QLabel(self.centralwidget)
         self.label_computer.setGeometry(QtCore.QRect(530, 130, 200, 200))
-        self.label_computer.setStyleSheet("background:rgb(95, 66, 212);\n""border-radius:10px;")
+        self.label_computer.setStyleSheet(
+            "background:rgb(95, 66, 212);\n"
+            "border-radius:10px;")
         self.label_computer.setPixmap(computer)
-        self.label_computer.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
+        self.label_computer.setAlignment(
+            QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
         font = QtGui.QFont()
         font.setFamily("Consolas")
         font.setPointSize(18)
         self.label_computer.setFont(font)
         self.label_computer.setObjectName("label_computer")
-        
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
@@ -262,7 +299,7 @@ class Ui_MainWindow(object):
         self.menuOptions.addSeparator()
         self.menuOptions.addAction(self.actionExit)
         self.menubar.addAction(self.menuOptions.menuAction())
-        
+
         self.actionViewHelp = QtWidgets.QAction(MainWindow)
         self.actionViewHelp.setObjectName("actionViewHelp")
         self.actionViewHelp.setShortcut("Ctrl+H")
@@ -272,8 +309,8 @@ class Ui_MainWindow(object):
         self.actionAbout.setObjectName("actionAbout")
         self.actionAbout.setShortcut("Ctrl+A")
         self.actionAbout.triggered.connect(self.view_about)
-        
-        self.menuMisc=QtWidgets.QMenu(self.menubar)
+
+        self.menuMisc = QtWidgets.QMenu(self.menubar)
         self.menuMisc.setObjectName("menuMisc")
         self.menuMisc.addAction(self.actionViewHelp)
         self.menuMisc.addSeparator()
@@ -285,15 +322,21 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Rock Paper Scissors"))
-        self.rock_pushButton.setText(_translate("MainWindow", "Rock"))
-        self.paper_pushButton.setText(_translate("MainWindow", "Paper"))
-        self.scissors_pushButton.setText(_translate("MainWindow", "Scissors"))
-        self.info_label.setText(_translate("MainWindow", "Let us play Rock/Paper/Scissors:"))
+        MainWindow.setWindowTitle(
+            _translate(
+                "MainWindow",
+                "Rock Paper Scissors"))
+        self.rock_pushButton.setText(_translate("MainWindow", "&Rock"))
+        self.paper_pushButton.setText(_translate("MainWindow", "&Paper"))
+        self.scissors_pushButton.setText(_translate("MainWindow", "&Scissors"))
+        self.info_label.setText(
+            _translate(
+                "MainWindow",
+                "Let us play Rock/Paper/Scissors:"))
         self.menuOptions.setTitle(_translate("MainWindow", "&Game"))
         self.menuMisc.setTitle(_translate("MainWindow", "&..."))
-        self.actionReset.setText(_translate("MainWindow", "&Reset"))
-        self.actionExit.setText(_translate("MainWindow", "&Exit"))
+        self.actionReset.setText(_translate("MainWindow", "R&eset"))
+        self.actionExit.setText(_translate("MainWindow", "E&xit"))
         self.actionViewHelp.setText(_translate("MainWindow", "&Help"))
         self.actionAbout.setText(_translate("MainWindow", "&About"))
 
@@ -301,7 +344,7 @@ class Ui_MainWindow(object):
 if __name__ == "__main__":
     import sys
     suppress_qt_warnings()
-    try: 
+    try:
         app = QtWidgets.QApplication(sys.argv)
         MainWindow = QtWidgets.QMainWindow()
         ui = Ui_MainWindow()
