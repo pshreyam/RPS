@@ -66,7 +66,7 @@ class Ui_MainWindow(object):
         msg.setInformativeText(text)
         msg.setWindowTitle("Help - Rock Paper Scissors")
         msg.setStandardButtons(QMessageBox.Ok)
-        retval = msg.exec_()
+        _ = msg.exec_()
 
     def view_about(self):
         """ Implement about functionalities using this function
@@ -81,7 +81,7 @@ class Ui_MainWindow(object):
         msg.setInformativeText(text)
         msg.setWindowTitle("About - Rock Paper Scissors")
         msg.setStandardButtons(QMessageBox.Ok)
-        retval = msg.exec_()
+        _ = msg.exec_()
 
     def reset(self):
         self.label.setText("")
