@@ -106,6 +106,7 @@ class Ui_MainWindow(object):
         result, choice = play(user)
         self.label.move(90, 180)
         self.label.setText(result)
+        print(result, choice)
         self.set_user_computer(choice, user)
         self.statusbar.showMessage(
             f"Computer chose: {choice} \t\t You chose: {user}")
